@@ -51191,7 +51191,7 @@ var ZSendHUSH = function (_React$Component6) {
                   null,
                   'To Address'
                 ),
-                _react2.default.createElement(_reactstrap.Input, { onChange: this.handleUpdateRecipientAddress, placeholder: 'e.g znSDvF9nA5VCdse5HbEKmsoNbjCbsEA3VAH' })
+                _react2.default.createElement(_reactstrap.Input, { onChange: this.handleUpdateRecipientAddress, placeholder: 'e.g t1UDhNq2aEqvxEbPzcRM8n2QJV8YJ664rXJ' })
               ),
               _react2.default.createElement(
                 _reactstrap.InputGroup,
