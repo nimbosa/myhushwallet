@@ -27679,7 +27679,7 @@ var ZNavbar = function (_React$Component) {
           _reactstrap.NavbarBrand,
           { href: '/' },
           _react2.default.createElement('img', { src: '/favicon.ico', height: 42 }),
-          '\xA0wallet.myhush.org'
+          '\xA0wallet.myhush.network'
         ),
         _react2.default.createElement(
           _reactstrap.Collapse,
@@ -30753,7 +30753,7 @@ var ZFooter = function (_React$Component) {
                 _react2.default.createElement(
                   'b',
                   null,
-                  'WALLET.MYHUSH.ORG'
+                  'WALLET.MYHUSH.NETWORK'
                 )
               ),
               _react2.default.createElement(
