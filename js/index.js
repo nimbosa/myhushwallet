@@ -34783,7 +34783,7 @@ var ZNavbar = function (_React$Component) {
           _reactstrap.NavbarBrand,
           { href: '/' },
           _react2.default.createElement('img', { src: '/favicon.ico', height: 42 }),
-          '\xA0myzenwallet.io'
+          '\xA0wallet.myhush.org' //TODO \xA0 is non breaking space
         ),
         _react2.default.createElement(
           _reactstrap.Collapse,
@@ -34791,15 +34791,6 @@ var ZNavbar = function (_React$Component) {
           _react2.default.createElement(
             _reactstrap.Nav,
             { className: 'ml-auto', navbar: true },
-            _react2.default.createElement(
-              _reactstrap.NavItem,
-              null,
-              _react2.default.createElement(
-                _reactstrap.NavLink,
-                { href: 'http://getzen.cash' },
-                'FREE ZEN'
-              )
-            ),
             _react2.default.createElement(
               _reactstrap.NavItem,
               null,
@@ -38054,7 +38045,7 @@ base.Node = __webpack_require__(448);
 /* 240 */
 /***/ (function(module, exports) {
 
-// https://en.bitcoin.it/wiki/List_of_address_prefixes
+// https://en.bitcoin.it/wiki/List_of_address_prefixes //TODO2 important to get right prefix for hush
 // Dogecoin BIP32 is a proposed standard: https://bitcointalk.org/index.php?topic=409731
 
 module.exports = {
@@ -38158,7 +38149,7 @@ var ZFooter = function (_React$Component) {
                 _react2.default.createElement(
                   'b',
                   null,
-                  'MYZENWALLET.IO'
+                  'WALLET.MYHUSH.ORG'
                 )
               ),
               _react2.default.createElement(
@@ -38169,8 +38160,19 @@ var ZFooter = function (_React$Component) {
               _react2.default.createElement(
                 'p',
                 null,
-                'Suggestions? Email me: kendricktan0814 at gmail.com or find me on slack @ kendricktan.'
+                'Suggestions?',
+               _react2.default.createElement(
+                'a',
+                { href: 'https://myhush.org/#contact' },
+                ' Contact us '
+              ), 
+                ' or join our ',
+              _react2.default.createElement(
+                'a',
+                { href: 'https://discord.io/hush' },
+                'Discord '
               ),
+                'server!'),
               _react2.default.createElement(
                 'p',
                 { style: longP },
@@ -38179,23 +38181,9 @@ var ZFooter = function (_React$Component) {
                 _react2.default.createElement(
                   'b',
                   null,
-                  'BTC'
+                  'HUSH'
                 ),
-                ': 12cEDPML2PoDkKeGcJUGJmEa5pQos3SVuf',
-                _react2.default.createElement('br', null),
-                _react2.default.createElement(
-                  'b',
-                  null,
-                  'ETH'
-                ),
-                ': 0x19Ed10db2960B9B21283FdFDe464e7bF3a87D05D',
-                _react2.default.createElement('br', null),
-                _react2.default.createElement(
-                  'b',
-                  null,
-                  'ZEN'
-                ),
-                ': znSDvF9nA5VCdse5HbEKmsoNbjCbsEA3VAH'
+                ': t1UDhNq2aEqvxEbPzcRM8n2QJV8YJ664rXJ'
               )
             ),
             _react2.default.createElement(
@@ -38203,32 +38191,32 @@ var ZFooter = function (_React$Component) {
               { md: '4' },
               _react2.default.createElement(
                 'a',
-                { href: 'https://zensystem.io/' },
+                { href: 'https://myhush.org/' },
                 'website'
-              ),
+              ),              
               _react2.default.createElement('br', null),
               _react2.default.createElement(
                 'a',
-                { href: 'https://blog.zensystem.io/' },
-                'blog'
-              ),
-              _react2.default.createElement('br', null),
-              _react2.default.createElement(
-                'a',
-                { href: 'https://forum.zensystem.io/' },
+                { href: 'https://forum.myhush.org/' },
                 'forum'
               ),
               _react2.default.createElement('br', null),
               _react2.default.createElement(
                 'a',
-                { href: 'https://github.com/ZencashOfficial' },
+                { href: 'https://github.com/MyHush' },
                 'github'
               ),
               _react2.default.createElement('br', null),
               _react2.default.createElement(
                 'a',
-                { href: 'https://slackinvite.zensystem.io/' },
+                { href: 'https://myhush.slack.com/' },
                 'slack'
+              ),
+              _react2.default.createElement('br', null),
+              _react2.default.createElement(
+                'a',
+                { href: 'https://discord.io/hush' },
+                'discord'
               ),
               _react2.default.createElement('br', null)
             )
@@ -38472,23 +38460,24 @@ curve.edwards = __webpack_require__(395);
 /***/ (function(module, exports) {
 
 /*
-config.js - Configuration for ZENCash Coin
+config.js - Configuration for Hush Coin IMPORTANT
 */
 
 module.exports = {
   mainnet: {
-    messagePrefix: 'ZENCash main net',
+    messagePrefix: 'Hush main net', //TODO2 ASK
     bip32: {
       public: '0488b21e',
-      private: '0488ade4'
+      //private: '0488ade4',
+      private: '05358394'
     },
-    pubKeyHash: '2089',
-    scriptHash: '2096',
-    zcPaymentAddressHash: '169a', // Private z-address
-    zcSpendingKeyHash: 'ab36', // Spending key
+    pubKeyHash: '1cb8', //2089
+    scriptHash: '1cbd', //2096
+    zcPaymentAddressHash: '169a', // Private z-address TODO2 ASK, refactor zc??? 169a
+    zcSpendingKeyHash: 'ab36', // Spending key ab36
     wif: '80'
   },
-  testnet: {
+  testnet: { //TODO2 ASK
     wif: 'ef',
     pubKeyHash: '2098'
   }
@@ -39660,10 +39649,10 @@ function WIFToPrivKey(wifPk) {
 }
 
 /*
- * Converts public key to zencash address
+ * Converts public key to Hush address
  * @param {String} pubKey (public key)
  * @param {String} pubKeyHash (public key hash (optional, else use defaul))
- * @return {Sting} zencash address
+ * @return {Sting} Hush address
  */
 function pubKeyToAddr(pubKey, pubKeyHash) {
   pubKeyHash = pubKeyHash || zconfig.mainnet.pubKeyHash;
@@ -50089,9 +50078,9 @@ var _reactTable = __webpack_require__(362);
 
 var _reactTable2 = _interopRequireDefault(_reactTable);
 
-var _zencashjs = __webpack_require__(284);
+var _hushjs = __webpack_require__(284);
 
-var _zencashjs2 = _interopRequireDefault(_zencashjs);
+var _hushjs2 = _interopRequireDefault(_hushjs); 
 
 var _utils = __webpack_require__(466);
 
@@ -50221,10 +50210,10 @@ var ZWalletGenerator = function (_React$Component2) {
     key: 'handlePasswordPhrase',
     value: function handlePasswordPhrase(e) {
       // What wif format do we use?
-      var wifHash = this.props.settings.useTestNet ? _zencashjs2.default.config.testnet.wif : _zencashjs2.default.config.mainnet.wif;
+      var wifHash = this.props.settings.useTestNet ? _hushjs2.default.config.testnet.wif : _hushjs2.default.config.mainnet.wif; //TODO
 
-      var pk = _zencashjs2.default.address.mkPrivKey(e.target.value);
-      var pkwif = _zencashjs2.default.address.privKeyToWIF(pk, true, wifHash);
+      var pk = _hushjs2.default.address.mkPrivKey(e.target.value); //TODO
+      var pkwif = _hushjs2.default.address.privKeyToWIF(pk, true, wifHash); //TODO
 
       if (e.target.value === '') {
         pkwif = '';
@@ -50422,9 +50411,9 @@ var ZWalletUnlockKey = function (_React$Component3) {
               _react2.default.createElement(
                 _reactstrap.FormText,
                 { color: 'muted' },
-                'For Windows, it should be in %APPDATA%/zen',
+                'For Windows, it should be in %APPDATA%/Roaming/Hush',
                 _react2.default.createElement('br', null),
-                'For Mac/Linux, it should be in ~/.zen'
+                'For Mac/Linux, it should be in ~/.Hush'
               )
             )
           )
@@ -50559,7 +50548,7 @@ var ZWalletSettings = function (_React$Component4) {
         _react2.default.createElement(
           _reactstrap.ModalHeader,
           { toggle: this.props.toggleShowSettings },
-          'ZenCash Wallet Settings'
+          'Hush Wallet Settings'
         ),
         _react2.default.createElement(
           _reactstrap.ModalBody,
@@ -50880,13 +50869,13 @@ var ZAddressInfo = function (_React$Component5) {
   return ZAddressInfo;
 }(_react2.default.Component);
 
-var ZSendZEN = function (_React$Component6) {
-  _inherits(ZSendZEN, _React$Component6);
+var ZSendHUSH = function (_React$Component6) {
+  _inherits(ZSendHUSH, _React$Component6);
 
-  function ZSendZEN(props) {
-    _classCallCheck(this, ZSendZEN);
+  function ZSendHUSH(props) {
+    _classCallCheck(this, ZSendHUSH);
 
-    var _this10 = _possibleConstructorReturn(this, (ZSendZEN.__proto__ || Object.getPrototypeOf(ZSendZEN)).call(this, props));
+    var _this10 = _possibleConstructorReturn(this, (ZSendHUSH.__proto__ || Object.getPrototypeOf(ZSendHUSH)).call(this, props));
 
     _this10.setProgressValue = _this10.setProgressValue.bind(_this10);
     _this10.setSendErrorMessage = _this10.setSendErrorMessage.bind(_this10);
@@ -50895,7 +50884,7 @@ var ZSendZEN = function (_React$Component6) {
     _this10.handleUpdateAmount = _this10.handleUpdateAmount.bind(_this10);
     _this10.handleCheckChanged = _this10.handleCheckChanged.bind(_this10);
     _this10.handleUpdateFee = _this10.handleUpdateFee.bind(_this10);
-    _this10.handleSendZEN = _this10.handleSendZEN.bind(_this10);
+    _this10.HandleSendHUSH = _this10.HandleSendHUSH.bind(_this10);
 
     _this10.state = {
       selectedAddress: '', // which address did we select
@@ -50910,7 +50899,7 @@ var ZSendZEN = function (_React$Component6) {
     return _this10;
   }
 
-  _createClass(ZSendZEN, [{
+  _createClass(ZSendHUSH, [{
     key: 'handleUpdateSelectedAddress',
     value: function handleUpdateSelectedAddress(e) {
       this.setState({
@@ -50960,8 +50949,8 @@ var ZSendZEN = function (_React$Component6) {
       });
     }
   }, {
-    key: 'handleSendZEN',
-    value: function handleSendZEN() {
+    key: 'HandleSendHUSH',
+    value: function HandleSendHUSH() {
       var value = this.state.amount;
       var fee = this.state.fee;
       var recipientAddress = this.state.recipientAddress;
@@ -50972,7 +50961,7 @@ var ZSendZEN = function (_React$Component6) {
       var satoshisToSend = Math.round(value * 100000000);
       var satoshisfeesToSend = Math.round(fee * 100000000);
 
-      // Reset zen send progress and error message
+      // Reset Hush send progress and error message
       this.setProgressValue(1);
       this.setSendErrorMessage('');
 
@@ -51063,7 +51052,7 @@ var ZSendZEN = function (_React$Component6) {
             // If we don't have enough address
             // fail and tell user
             if (satoshisSoFar < satoshisToSend + satoshisfeesToSend) {
-              this.setSendErrorMessage('Not enough confirmed ZEN in account to perform transaction');
+              this.setSendErrorMessage('Not enough confirmed HUSH in account to perform transaction');
               this.setProgressValue(0);
             }
 
@@ -51075,15 +51064,15 @@ var ZSendZEN = function (_React$Component6) {
             }
 
             // Create transaction
-            var txObj = _zencashjs2.default.transaction.createRawTx(history, recipients, blockHeight, blockHash);
+            var txObj = _hushjs2.default.transaction.createRawTx(history, recipients, blockHeight, blockHash);
 
             // Sign each history transcation          
             for (var i = 0; i < history.length; i++) {
-              txObj = _zencashjs2.default.transaction.signTx(txObj, i, senderPrivateKey, this.props.settings.compressPubKey);
+              txObj = _hushjs2.default.transaction.signTx(txObj, i, senderPrivateKey, this.props.settings.compressPubKey);
             }
 
             // Convert it to hex string
-            var txHexString = _zencashjs2.default.transaction.serializeTx(txObj);
+            var txHexString = _hushjs2.default.transaction.serializeTx(txObj);
 
             _axios2.default.post(sendRawTxURL, { rawtx: txHexString }).then(function (sendtx_resp) {
               this.setState({
@@ -51107,21 +51096,21 @@ var ZSendZEN = function (_React$Component6) {
     key: 'render',
     value: function render() {
       // If send was successful
-      var zenTxLink;
+      var hushTxlink;
       if (this.state.sendProgress === 100) {
-        var zentx = _utils2.default.urlAppend(this.props.settings.explorerURL, 'tx/') + this.state.sentTxid;
-        zenTxLink = _react2.default.createElement(
+        var hushtx = _utils2.default.urlAppend(this.props.settings.explorerURL, 'tx/') + this.state.sentTxid;
+        hushTxlink = _react2.default.createElement(
           _reactstrap.Alert,
           { color: 'success' },
           _react2.default.createElement(
             'strong',
             null,
-            'ZEN successfully sent!'
+            'HUSH successfully sent!'
           ),
           ' ',
           _react2.default.createElement(
             'a',
-            { href: zentx },
+            { href: hushtx },
             'Click here to view your transaction'
           )
         );
@@ -51129,7 +51118,7 @@ var ZSendZEN = function (_React$Component6) {
 
       // Else show error why
       else if (this.state.sendErrorMessage !== '') {
-          zenTxLink = this.state.sendErrorMessage.split(';').map(function (s) {
+          hushTxlink = this.state.sendErrorMessage.split(';').map(function (s) {
             if (s !== '') {
               return _react2.default.createElement(
                 _reactstrap.Alert,
@@ -51177,7 +51166,7 @@ var ZSendZEN = function (_React$Component6) {
               _react2.default.createElement(
                 _reactstrap.Alert,
                 { color: 'danger' },
-                'ALWAYS VALIDATE YOUR DESINATION ADDRESS BY SENDING SMALL AMOUNTS OF ZEN FIRST'
+                'ALWAYS VALIDATE YOUR DESINATION ADDRESS BY SENDING SMALL AMOUNTS OF HUSH FIRST'
               ),
               _react2.default.createElement(
                 _reactstrap.InputGroup,
@@ -51233,7 +51222,7 @@ var ZSendZEN = function (_React$Component6) {
                   { check: true },
                   _react2.default.createElement(_reactstrap.Input, { onChange: this.handleCheckChanged, type: 'checkbox' }),
                   ' ',
-                  'Yes, I would like to send these ZEN'
+                  'Yes, I would like to send these HUSH'
                 )
               ),
               _react2.default.createElement('br', null),
@@ -51242,7 +51231,7 @@ var ZSendZEN = function (_React$Component6) {
                 {
                   color: 'warning', className: 'btn-block',
                   disabled: !this.state.confirmSend || this.state.sendProgress > 0 && this.state.sendProgress < 100,
-                  onClick: this.handleSendZEN
+                  onClick: this.HandleSendHUSH
                 },
                 'Send'
               )
@@ -51250,7 +51239,7 @@ var ZSendZEN = function (_React$Component6) {
             _react2.default.createElement(
               _reactstrap.CardFooter,
               null,
-              zenTxLink,
+              hushTxlink,
               _react2.default.createElement(_reactstrap.Progress, { value: this.state.sendProgress })
             )
           )
@@ -51259,7 +51248,7 @@ var ZSendZEN = function (_React$Component6) {
     }
   }]);
 
-  return ZSendZEN;
+  return ZSendHUSH;
 }(_react2.default.Component);
 
 var ZWalletSelectUnlockType = function (_React$Component7) {
@@ -51445,7 +51434,7 @@ var ZWalletTabs = function (_React$Component9) {
       var now = new Date();
       now = now.toISOString().split('.')[0] + 'Z';
 
-      var fileStr = '# Wallet dump created by myzenwallet ' + _package2.default.version + '\n';
+      var fileStr = '# Wallet dump created by myhushwallet ' + _package2.default.version + '\n';
       fileStr += '# Created on ' + now + '\n\n\n';
 
       Object.keys(this.props.publicAddresses).forEach(function (key) {
@@ -51455,7 +51444,7 @@ var ZWalletTabs = function (_React$Component9) {
       }.bind(this));
 
       var pkBlob = new Blob([fileStr], { type: 'text/plain;charset=utf-8' });
-      _fileSaver2.default.saveAs(pkBlob, now + '_myzenwallet_private_keys.txt');
+      _fileSaver2.default.saveAs(pkBlob, now + '_myhushwallet_private_keys.txt');
     }
   }, {
     key: 'render',
@@ -51493,7 +51482,7 @@ var ZWalletTabs = function (_React$Component9) {
                   _this15.toggleTabs('2');
                 }
               },
-              'Send ZEN'
+              'Send HUSH'
             )
           ),
           _react2.default.createElement(
@@ -51526,7 +51515,7 @@ var ZWalletTabs = function (_React$Component9) {
           _react2.default.createElement(
             _reactstrap.TabPane,
             { tabId: '2' },
-            _react2.default.createElement(ZSendZEN, {
+            _react2.default.createElement(ZSendHUSH, {
               settings: this.props.settings,
               publicAddresses: this.props.publicAddresses
             })
@@ -51603,8 +51592,8 @@ var ZWallet = function (_React$Component10) {
         showSettings: false,
         showWalletGen: false,
         compressPubKey: true,
-        insightAPI: 'https://explorer.zensystem.io/insight-api-zen/',
-        explorerURL: 'https://explorer.zensystem.io/',
+        insightAPI: 'https://explorer.myhush.network/api', //TODO2
+        explorerURL: 'https://explorer.myhush.org/', 
         useTestNet: false,
         unlockType: UNLOCK_WALLET_TYPE.HD_WALLET
       }
@@ -51623,15 +51612,15 @@ var ZWallet = function (_React$Component10) {
         var _privKeyToAddr = function _privKeyToAddr(pk, compressPubKey, useTestNet) {
           // If not 64 length, probs WIF format
           if (pk.length !== 64) {
-            pk = _zencashjs2.default.address.WIFToPrivKey(pk);
+            pk = _hushjs2.default.address.WIFToPrivKey(pk);
           }
 
           // Convert public key to public address
-          var pubKey = _zencashjs2.default.address.privKeyToPubKey(pk, compressPubKey);
+          var pubKey = _hushjs2.default.address.privKeyToPubKey(pk, compressPubKey);
 
           // Testnet or nah
-          var pubKeyHash = useTestNet ? _zencashjs2.default.config.testnet.pubKeyHash : _zencashjs2.default.config.mainnet.pubKeyHash;
-          var publicAddr = _zencashjs2.default.address.pubKeyToAddr(pubKey, pubKeyHash);
+          var pubKeyHash = useTestNet ? _hushjs2.default.config.testnet.pubKeyHash : _hushjs2.default.config.mainnet.pubKeyHash;
+          var publicAddr = _hushjs2.default.address.pubKeyToAddr(pubKey, pubKeyHash);
 
           return publicAddr;
         };
@@ -51639,7 +51628,7 @@ var ZWallet = function (_React$Component10) {
         var publicAddresses = {};
 
         for (var i = 0; i < this.state.privateKeys.length; i++) {
-          var pubKeyHash = this.state.settings.useTestNet ? _zencashjs2.default.config.testnet.wif : _zencashjs2.default.config.mainnet.wif;
+          var pubKeyHash = this.state.settings.useTestNet ? _hushjs2.default.config.testnet.wif : _hushjs2.default.config.mainnet.wif;
 
           var c_pk_wif;
           var c_pk = this.state.privateKeys[i];
@@ -51647,12 +51636,12 @@ var ZWallet = function (_React$Component10) {
           // If not 64 length, probs WIF format
           if (c_pk.length !== 64) {
             c_pk_wif = c_pk;
-            c_pk = _zencashjs2.default.address.WIFToPrivKey(c_pk);
+            c_pk = _hushjs2.default.address.WIFToPrivKey(c_pk);
           } else {
-            c_pk_wif = _zencashjs2.default.address.privKeyToWIF(c_pk);
+            c_pk_wif = _hushjs2.default.address.privKeyToWIF(c_pk);
           }
 
-          var c_pk_wif = _zencashjs2.default.address.privKeyToWIF(c_pk, true, pubKeyHash);
+          var c_pk_wif = _hushjs2.default.address.privKeyToWIF(c_pk, true, pubKeyHash);
           var c_addr = _privKeyToAddr(c_pk, this.state.settings.compressPubKey, this.state.settings.useTestNet);
 
           publicAddresses[c_addr] = {
@@ -51749,11 +51738,11 @@ var ZWallet = function (_React$Component10) {
       _settings.useTestNet = !_settings.useTestNet;
 
       if (_settings.useTestNet) {
-        _settings.insightAPI = 'https://aayanl.tech/insight-api-zen/';
-        _settings.explorerURL = 'https://aayanl.tech/';
+        _settings.insightAPI = 'https://aayanl.tech/insight-api-zen/'; //TODO2 hush testnet api
+        _settings.explorerURL = 'https://aayanl.tech/'; //explorer testnet
       } else {
-        _settings.insightAPI = 'https://explorer.zensystem.io/insight-api-zen/';
-        _settings.explorerURL = 'https://explorer.zensystem.io/';
+        _settings.insightAPI = 'https://explorer.myhush.network/api'; //api normal
+        _settings.explorerURL = 'https://explorer.myhush.org/';
       }
 
       this.setState({
@@ -51795,7 +51784,7 @@ var ZWallet = function (_React$Component10) {
             _react2.default.createElement(
               'h1',
               { className: 'display-6' },
-              'ZenCash Wallet\xA0',
+              'Hush Wallet\xA0',
               _react2.default.createElement(ToolTipButton, { onClick: this.toggleShowSettings, id: 1, buttonText: _react2.default.createElement(_settings3.default, null), tooltipText: 'settings' }),
               '\xA0',
               _react2.default.createElement(ToolTipButton, { disabled: this.state.publicAddresses === null, onClick: this.resetKeys, id: 2, buttonText: _react2.default.createElement(_repeat2.default, null), tooltipText: 'reset wallet' })
@@ -71478,7 +71467,7 @@ var zaddress = __webpack_require__(255);
 var zopcodes = __webpack_require__(465);
 var zbufferutils = __webpack_require__(323);
 
-/* More info: https://github.com/ZencashOfficial/zen/blob/master/src/script/standard.cpp#L377
+/* More info: https://github.com/ZencashOfficial/zen/blob/master/src/script/standard.cpp#L377 //TODO 
  * Given an address, generates a pubkeyhash replay type script needed for the transaction
  * @param {String} address
  * @param {Number} blockHeight
@@ -72102,7 +72091,7 @@ var Uint64BE, Int64BE, Uint64LE, Int64LE;
 
 module.exports = {
   /* SIGHASH Codes
-   * Obtained from: https://github.com/ZencashOfficial/zen/blob/master/src/script/interpreter.h
+   * Obtained from: https://github.com/ZencashOfficial/zen/blob/master/src/script/interpreter.h //TODO
    */
   SIGHASH_ALL: 1,
   SIGHASH_NONE: 2,
@@ -72116,7 +72105,7 @@ module.exports = {
 
 
 /* Useful OP codes for the scripting language
- * Obtained from: https://github.com/ZencashOfficial/zen/blob/master/src/script/script.h
+ * Obtained from: https://github.com/ZencashOfficial/zen/blob/master/src/script/script.h //TODO
  */
 
 module.exports = {
@@ -77812,7 +77801,7 @@ module.exports = ret;
 
 var bitcoinjs = __webpack_require__(324);
 var bip32utils = __webpack_require__(499);
-var zencashjs = __webpack_require__(284);
+var hushjs = __webpack_require__(284);
 var bs58check = __webpack_require__(109);
 
 // Hierarchical Deterministic wallet
@@ -80732,12 +80721,12 @@ module.exports = exports['default'];
 /***/ (function(module, exports) {
 
 module.exports = {
-	"name": "myzenwallet",
-	"version": "v2.0.6a",
-	"description": "Secure ZENCash wallet online",
+	"name": "myhushwallet",
+	"version": "v2.0.7",
+	"description": "Secure Hush wallet online",
 	"main": "index.js",
-	"repository": "https://github.com/kendricktan/myzenwallet.git",
-	"author": "Kendrick Tan <kendricktan0814@gmail.com>",
+	"repository": "https://github.com/thetrunk/myhushwallet.git",
+	"author": "The Trunk",
 	"license": "MIT",
 	"scripts": {
 		"start": "webpack-dev-server",
@@ -80774,7 +80763,7 @@ module.exports = {
 		"throttled-queue": "^1.0.4",
 		"webpack": "^3.3.0",
 		"webpack-dev-server": "^2.5.1",
-		"zencashjs": "^1.1.4-a"
+		"hushjs": "^1.1.4-a"
 	},
 	"devDependencies": {
 		"babel-core": "^6.25.0",

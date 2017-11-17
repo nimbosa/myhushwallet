@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{881EC193-39E8-4901-90AC-664F086C07F8}"
+	ProjectSection(SolutionItems) = preProject
+		.babelrc = .babelrc
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		.yarnclean = .yarnclean
+		CNAME = CNAME
+		faq.html = faq.html
+		favicon.ico = favicon.ico
+		guide.html = guide.html
+		index.html = index.html
+		..\..\..\Desktop\index2.js = ..\..\..\Desktop\index2.js
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "js", "js", "{8D7FBB39-A094-471E-AA67-104B3A54194A}"
+	ProjectSection(SolutionItems) = preProject
+		js\faq.js = js\faq.js
+		js\guide.js = js\guide.js
+		js\index.js = js\index.js
+		..\..\..\Desktop\index2.js = ..\..\..\Desktop\index2.js
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8D7FBB39-A094-471E-AA67-104B3A54194A} = {881EC193-39E8-4901-90AC-664F086C07F8}
+	EndGlobalSection
+EndGlobal

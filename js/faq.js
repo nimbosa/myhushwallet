@@ -27616,7 +27616,7 @@ var ZNavbar = function (_React$Component) {
           _reactstrap.NavbarBrand,
           { href: '/' },
           _react2.default.createElement('img', { src: '/favicon.ico', height: 42 }),
-          '\xA0myzenwallet.io'
+          '\xA0wallet.myhush.org'
         ),
         _react2.default.createElement(
           _reactstrap.Collapse,
@@ -27624,15 +27624,6 @@ var ZNavbar = function (_React$Component) {
           _react2.default.createElement(
             _reactstrap.Nav,
             { className: 'ml-auto', navbar: true },
-            _react2.default.createElement(
-              _reactstrap.NavItem,
-              null,
-              _react2.default.createElement(
-                _reactstrap.NavLink,
-                { href: 'http://getzen.cash' },
-                'FREE ZEN'
-              )
-            ),
             _react2.default.createElement(
               _reactstrap.NavItem,
               null,
@@ -30699,7 +30690,7 @@ var ZFooter = function (_React$Component) {
                 _react2.default.createElement(
                   'b',
                   null,
-                  'MYZENWALLET.IO'
+                  'WALLET.MYHUSH.ORG'
                 )
               ),
               _react2.default.createElement(
@@ -30710,8 +30701,19 @@ var ZFooter = function (_React$Component) {
               _react2.default.createElement(
                 'p',
                 null,
-                'Suggestions? Email me: kendricktan0814 at gmail.com or find me on slack @ kendricktan.'
+                'Suggestions?',
+               _react2.default.createElement(
+                'a',
+                { href: 'https://myhush.org/#contact' },
+                ' Contact us '
+              ), 
+                'or join our ',
+              _react2.default.createElement(
+                'a',
+                { href: 'https://discord.io/hush' },
+                'Discord '
               ),
+                'server!'),
               _react2.default.createElement(
                 'p',
                 { style: longP },
@@ -30720,23 +30722,9 @@ var ZFooter = function (_React$Component) {
                 _react2.default.createElement(
                   'b',
                   null,
-                  'BTC'
+                  'HUSH'
                 ),
-                ': 12cEDPML2PoDkKeGcJUGJmEa5pQos3SVuf',
-                _react2.default.createElement('br', null),
-                _react2.default.createElement(
-                  'b',
-                  null,
-                  'ETH'
-                ),
-                ': 0x19Ed10db2960B9B21283FdFDe464e7bF3a87D05D',
-                _react2.default.createElement('br', null),
-                _react2.default.createElement(
-                  'b',
-                  null,
-                  'ZEN'
-                ),
-                ': znSDvF9nA5VCdse5HbEKmsoNbjCbsEA3VAH'
+                ': t1UDhNq2aEqvxEbPzcRM8n2QJV8YJ664rXJ'
               )
             ),
             _react2.default.createElement(
@@ -30744,32 +30732,32 @@ var ZFooter = function (_React$Component) {
               { md: '4' },
               _react2.default.createElement(
                 'a',
-                { href: 'https://zensystem.io/' },
+                { href: 'https://myhush.org/' },
                 'website'
-              ),
+              ),              
               _react2.default.createElement('br', null),
               _react2.default.createElement(
                 'a',
-                { href: 'https://blog.zensystem.io/' },
-                'blog'
-              ),
-              _react2.default.createElement('br', null),
-              _react2.default.createElement(
-                'a',
-                { href: 'https://forum.zensystem.io/' },
+                { href: 'https://forum.myhush.org/' },
                 'forum'
               ),
               _react2.default.createElement('br', null),
               _react2.default.createElement(
                 'a',
-                { href: 'https://github.com/ZencashOfficial' },
+                { href: 'https://github.com/MyHush' },
                 'github'
               ),
               _react2.default.createElement('br', null),
               _react2.default.createElement(
                 'a',
-                { href: 'https://slackinvite.zensystem.io/' },
+                { href: 'https://myhush.slack.com/' },
                 'slack'
+              ),
+              _react2.default.createElement('br', null),
+              _react2.default.createElement(
+                'a',
+                { href: 'https://discord.io/hush' },
+                'discord'
               ),
               _react2.default.createElement('br', null)
             )
@@ -31157,7 +31145,7 @@ var ZFaq = function (_React$Component) {
                 'Q: How is this secure? Its on a web browser!'
               ),
               _react2.default.createElement('br', null),
-              'A: MyZenWallet has replicated the core features of the ZEN daemon in JavaScript! So the process of creating and signing the transactions are all done within the browser. No sensitive information is sent through the network.'
+              'A: My Hush Wallet has replicated the core features of the HUSH daemon in JavaScript! So the process of creating and signing the transactions are all done within the browser. No sensitive information is sent through the network.'
             ),
             _react2.default.createElement(
               'p',
@@ -31171,7 +31159,7 @@ var ZFaq = function (_React$Component) {
               'A: ',
               _react2.default.createElement(
                 'a',
-                { href: 'https://github.com/zencashofficial/myzenwallet' },
+                { href: 'https://github.com/myhush/myhushwallet' },
                 'Here you go'
               )
             ),
@@ -31184,36 +31172,19 @@ var ZFaq = function (_React$Component) {
                 'Q: Why are you doing this?'
               ),
               _react2.default.createElement('br', null),
-              'A: MyZenWallet was inspired by ',
+              'A: My Hush Wallet was inspired by ',
+              _react2.default.createElement(
+                'a',
+                { href: 'https://myzenwallet.io/' },
+                'MyZenWallet\'s'
+              ),
+               'which was inspired by ',
               _react2.default.createElement(
                 'a',
                 { href: 'https://myetherwallet.com' },
                 'MyEtherWallet\'s'
               ),
-              ' mission statement: to provide the people the ability to interact with the ZEN blockchain easily, without having to run a full node.'
-            ),
-            _react2.default.createElement(
-              'p',
-              null,
-              _react2.default.createElement(
-                'b',
-                null,
-                'Q: Can I get free ZEN?'
-              ),
-              _react2.default.createElement('br', null),
-              'A: Sure! Select an address frm your wallet (check out how to create a wallet via ',
-              _react2.default.createElement(
-                'a',
-                { href: '/guide.html' },
-                'the guide'
-              ),
-              ' if you don\'t have one yet) and enter it into ',
-              _react2.default.createElement(
-                'a',
-                { href: 'http://getzen.cash' },
-                'getzen.cash'
-              ),
-              '.'
+              '. We also want to provide the people the ability to interact with the HUSH blockchain easily, without having to run a full node.'
             )
           )
         )
