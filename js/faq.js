@@ -30744,7 +30744,7 @@ var ZFooter = function (_React$Component) {
               _react2.default.createElement('br', null),
               _react2.default.createElement(
                 'a',
-                { href: 'https://github.com/MyHush' },
+                { href: 'https://github.com/MyHush/myhushwallet' },
                 'github'
               ),
               _react2.default.createElement('br', null),
