@@ -51583,7 +51583,7 @@ var ZWallet = function (_React$Component10) {
         showWalletGen: false,
         compressPubKey: true,
         insightAPI: 'https://explorer.myhush.network/api', //TODO2
-        explorerURL: 'https://explorer.myhush.org/', 
+        explorerURL: 'https://explorer.myhush.network/', 
         useTestNet: false,
         unlockType: UNLOCK_WALLET_TYPE.HD_WALLET
       }
@@ -51732,7 +51732,7 @@ var ZWallet = function (_React$Component10) {
         _settings.explorerURL = 'https://aayanl.tech/'; //explorer testnet
       } else {
         _settings.insightAPI = 'https://explorer.myhush.network/api'; //api normal
-        _settings.explorerURL = 'https://explorer.myhush.org/';
+        _settings.explorerURL = 'https://explorer.myhush.network/';
       }
 
       this.setState({
