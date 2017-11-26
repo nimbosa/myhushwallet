@@ -1,14 +1,9 @@
-# myhushwallet
+# myzenwallet
 
-MyHushWallet is a client-side browser-based wallet for Hush.
-
-This project is a port of MyZenWallet https://github.com/ZencashOfficial/myzenwallet which was inspired by MyEtherWallet.
-
-Currently avaiable at: https://wallet.myhush.network
+MyZENWallet is a client-side browser-based wallet for ZenCASH.
 
 # Running locally
-Download index.html, faq.html, guide.html, favicon.ico, Javascript folder (js) and double click `index.html`
-
+Download one of the releases, goto the `dist` folder and double click `index.html`
 
 # Dev
 ```shell

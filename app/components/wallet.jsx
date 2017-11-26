@@ -6,8 +6,8 @@ import QRCode from 'qrcode.react';
 import classnames from 'classnames'
 import CopyToClipboard from 'react-copy-to-clipboard'
 import ReactTable from 'react-table'
-import hushjs from 'hushjs'
-import hushwalletutils from '../lib/utils'
+import zencashjs from 'zencashjs'
+import zenwalletutils from '../lib/utils'
 import hdwallet from '../lib/hdwallet'
 import FileSaver from 'file-saver'
 
@@ -22,7 +22,7 @@ import FAEye from 'react-icons/lib/fa/eye'
 import pjson from '../../package.json'
 
 // Throttled GET request to prevent unusable lag
-const throttledAxiosGet = hushwalletutils.promiseDebounce(axios.get, 1000, 5)
+const throttledAxiosGet = zenwalletutils.promiseDebounce(axios.get, 1000, 5)
 
 // Unlock wallet enum
 var UNLOCK_WALLET_TYPE = {
@@ -75,10 +75,10 @@ class ZWalletGenerator extends React.Component {
 
   handlePasswordPhrase(e){
     // What wif format do we use?
-    var wifHash = this.props.settings.useTestNet ? hushjs.config.testnet.wif : hushjs.config.mainnet.wif
+    var wifHash = this.props.settings.useTestNet ? zencashjs.config.testnet.wif : zencashjs.config.mainnet.wif
 
-    var pk = hushjs.address.mkPrivKey(e.target.value)
-    var pkwif = hushjs.address.privKeyToWIF(pk, true, wifHash)
+    var pk = zencashjs.address.mkPrivKey(e.target.value)
+    var pkwif = zencashjs.address.privKeyToWIF(pk, true, wifHash)
 
     if (e.target.value === ''){
       pkwif = ''
@@ -223,8 +223,8 @@ class ZWalletUnlockKey extends React.Component {
                 />
               </Label>
               <FormText color="muted">
-                For Windows, it should be in %APPDATA%/Roaming/Hush<br/>
-                For Mac/Linux, it should be in ~/.Hush
+                For Windows, it should be in %APPDATA%/zen<br/>
+                For Mac/Linux, it should be in ~/.zen
               </FormText>
             </Col>
           </FormGroup>
@@ -286,7 +286,7 @@ class ZWalletSettings extends React.Component {
   render () {
     return (
       <Modal isOpen={this.props.settings.showSettings} toggle={this.props.toggleModalSettings}>
-        <ModalHeader toggle={this.props.toggleShowSettings}>Hush Wallet Settings</ModalHeader>                  
+        <ModalHeader toggle={this.props.toggleShowSettings}>ZenCash Wallet Settings</ModalHeader>                  
         <ModalBody>
           <ZWalletSelectUnlockType
               setUnlockType={this.props.setUnlockType}
@@ -364,14 +364,14 @@ class ZAddressInfo extends React.Component {
 
   // Gets the blockchain explorer URL for an address
   getAddressBlockExplorerURL(address) {
-    return hushwalletutils.urlAppend(this.props.settings.explorerURL, 'address/') + address
+    return zenwalletutils.urlAppend(this.props.settings.explorerURL, 'address/') + address
   }
 
   // Updates a address info
   updateAddressInfo(address) {
     // GET request to URL
-    var info_url = hushwalletutils.urlAppend(this.props.settings.insightAPI, 'addr/')
-    info_url = hushwalletutils.urlAppend(info_url, address + '?noTxList=1')    
+    var info_url = zenwalletutils.urlAppend(this.props.settings.insightAPI, 'addr/')
+    info_url = zenwalletutils.urlAppend(info_url, address + '?noTxList=1')    
         
     throttledAxiosGet(info_url)
     .then(function (response){
@@ -500,7 +500,7 @@ class ZAddressInfo extends React.Component {
   }
 }
 
-class ZSendHUSH extends React.Component {
+class ZSendZEN extends React.Component {
   constructor(props) {
     super(props)    
     
@@ -511,7 +511,7 @@ class ZSendHUSH extends React.Component {
     this.handleUpdateAmount = this.handleUpdateAmount.bind(this);
     this.handleCheckChanged = this.handleCheckChanged.bind(this);
     this.handleUpdateFee = this.handleUpdateFee.bind(this);
-    this.handleSendHUSH = this.handleSendHUSH.bind(this);    
+    this.handleSendZEN = this.handleSendZEN.bind(this);    
 
     this.state = {
       selectedAddress: '', // which address did we select
@@ -567,7 +567,7 @@ class ZSendHUSH extends React.Component {
     })
   }
 
-  handleSendHUSH(){      
+  handleSendZEN(){      
     const value = this.state.amount;
     const fee = this.state.fee;
     const recipientAddress = this.state.recipientAddress;
@@ -578,7 +578,7 @@ class ZSendHUSH extends React.Component {
     const satoshisToSend = Math.round(value * 100000000)
     const satoshisfeesToSend = Math.round(fee * 100000000)        
     
-    // Reset hush send progress and error message
+    // Reset zen send progress and error message
     this.setProgressValue(1)
     this.setSendErrorMessage('')
 
@@ -617,9 +617,9 @@ class ZSendHUSH extends React.Component {
     const senderPrivateKey = this.props.publicAddresses[senderAddress].privateKey;
 
     // Get previous transactions
-    const prevTxURL = hushwalletutils.urlAppend(this.props.settings.insightAPI, 'addr/') + senderAddress + '/utxo'
-    const infoURL = hushwalletutils.urlAppend(this.props.settings.insightAPI, 'status?q=getInfo')
-    const sendRawTxURL = hushwalletutils.urlAppend(this.props.settings.insightAPI, 'tx/send')
+    const prevTxURL = zenwalletutils.urlAppend(this.props.settings.insightAPI, 'addr/') + senderAddress + '/utxo'
+    const infoURL = zenwalletutils.urlAppend(this.props.settings.insightAPI, 'status?q=getInfo')
+    const sendRawTxURL = zenwalletutils.urlAppend(this.props.settings.insightAPI, 'tx/send')
 
     // Building our transaction TXOBJ
     // How many satoshis do we have so far
@@ -639,6 +639,15 @@ class ZSendHUSH extends React.Component {
         this.setProgressValue(50)
         const info_data = info_resp.data
 
+        const blockHeight = info_data.info.blocks - 300
+        const blockHashURL = zenwalletutils.urlAppend(this.props.settings.insightAPI, 'block-index/') + blockHeight        
+
+        // Get block hash
+        axios.get(blockHashURL)
+        .then(function(response_bhash){
+          this.setProgressValue(75)
+          
+          const blockHash = response_bhash.data.blockHash
 
           // Iterate through each utxo
           // append it to history
@@ -663,7 +672,7 @@ class ZSendHUSH extends React.Component {
           // If we don't have enough address
           // fail and tell user
           if (satoshisSoFar < satoshisToSend + satoshisfeesToSend){            
-            this.setSendErrorMessage('Not enough confirmed HUSH in account to perform transaction')
+            this.setSendErrorMessage('Not enough confirmed ZEN in account to perform transaction')
             this.setProgressValue(0)          
           }
 
@@ -675,15 +684,15 @@ class ZSendHUSH extends React.Component {
           }
 
           // Create transaction
-          var txObj = hushjs.transaction.createRawTx(history, recipients)
+          var txObj = zencashjs.transaction.createRawTx(history, recipients, blockHeight, blockHash)
 
           // Sign each history transcation          
           for (var i = 0; i < history.length; i ++){
-            txObj = hushjs.transaction.signTx(txObj, i, senderPrivateKey, this.props.settings.compressPubKey)
+            txObj = zencashjs.transaction.signTx(txObj, i, senderPrivateKey, this.props.settings.compressPubKey)
           }
 
           // Convert it to hex string
-          const txHexString = hushjs.transaction.serializeTx(txObj)
+          const txHexString = zencashjs.transaction.serializeTx(txObj)
 
           axios.post(sendRawTxURL, {rawtx: txHexString})
           .then(function(sendtx_resp){         
@@ -699,6 +708,7 @@ class ZSendHUSH extends React.Component {
           }.bind(this))
         }.bind(this))
       }.bind(this))
+    }.bind(this))
     .catch(function(error){      
       this.setSendErrorMessage(error)
       this.setProgressValue(0)
@@ -708,19 +718,19 @@ class ZSendHUSH extends React.Component {
 
   render() {
     // If send was successful
-    var hushTxLink
+    var zenTxLink
     if (this.state.sendProgress === 100){
-      var hushtx = hushwalletutils.urlAppend(this.props.settings.explorerURL, 'tx/') + this.state.sentTxid
-      hushTxLink = (
+      var zentx = zenwalletutils.urlAppend(this.props.settings.explorerURL, 'tx/') + this.state.sentTxid
+      zenTxLink = (
         <Alert color="success">
-        <strong>HUSH successfully sent!</strong> <a href={hushtx}>Click here to view your transaction</a>
+        <strong>ZEN successfully sent!</strong> <a href={zentx}>Click here to view your transaction</a>
         </Alert>
       )      
     }
 
     // Else show error why
     else if (this.state.sendErrorMessage !== ''){
-      hushTxLink = (
+      zenTxLink = (
         this.state.sendErrorMessage.split(';').map(function (s) {
           if (s !== ''){
             return (
@@ -749,7 +759,7 @@ class ZSendHUSH extends React.Component {
         <Col>
           <Card>
             <CardBlock>       
-              <Alert color="danger">ALWAYS VALIDATE YOUR DESINATION ADDRESS BY SENDING SMALL AMOUNTS OF HUSH FIRST</Alert>              
+              <Alert color="danger">ALWAYS VALIDATE YOUR DESINATION ADDRESS BY SENDING SMALL AMOUNTS OF ZEN FIRST</Alert>              
               <InputGroup>
                 <InputGroupAddon>From Address</InputGroupAddon>
                 <Input type="select" onChange={this.handleUpdateSelectedAddress}>
@@ -759,7 +769,7 @@ class ZSendHUSH extends React.Component {
               </InputGroup>
               <InputGroup>
                 <InputGroupAddon>To Address</InputGroupAddon>
-                <Input onChange={this.handleUpdateRecipientAddress} placeholder="e.g t1UDhNq2aEqvxEbPzcRM8n2QJV8YJ664rXJ" />
+                <Input onChange={this.handleUpdateRecipientAddress} placeholder="e.g znSDvF9nA5VCdse5HbEKmsoNbjCbsEA3VAH" />
               </InputGroup>
               <InputGroup>
                 <InputGroupAddon>Amount</InputGroupAddon>
@@ -773,18 +783,18 @@ class ZSendHUSH extends React.Component {
               <FormGroup check>
                 <Label check>
                   <Input onChange={this.handleCheckChanged} type="checkbox" />{' '}
-                  Yes, I would like to send these HUSH
+                  Yes, I would like to send these ZEN
                 </Label>
               </FormGroup> 
               <br/>                           
               <Button 
                 color="warning" className="btn-block"
                 disabled={!this.state.confirmSend || (this.state.sendProgress > 0 && this.state.sendProgress < 100)}
-                onClick={this.handleSendHUSH}
+                onClick={this.handleSendZEN}
               >Send</Button>
             </CardBlock>
             <CardFooter> 
-              {hushTxLink}
+              {zenTxLink}
               <Progress value={this.state.sendProgress} />                                  
             </CardFooter>       
           </Card>
@@ -911,7 +921,7 @@ class ZWalletTabs extends React.Component {
     var now = new Date();
     now = now.toISOString().split('.')[0]+'Z';
 
-    var fileStr = '# Wallet dump created by myhushwallet ' + pjson.version + '\n'
+    var fileStr = '# Wallet dump created by myzenwallet ' + pjson.version + '\n'
     fileStr += '# Created on ' + now + '\n\n\n'
 
     Object.keys(this.props.publicAddresses).forEach(function(key) {
@@ -921,7 +931,7 @@ class ZWalletTabs extends React.Component {
     }.bind(this))
     
     const pkBlob = new Blob([fileStr], {type: 'text/plain;charset=utf-8'})
-    FileSaver.saveAs(pkBlob, now + '_myhushwallet_private_keys.txt')
+    FileSaver.saveAs(pkBlob, now + '_myzenwallet_private_keys.txt')
   }
 
   render () {
@@ -941,7 +951,7 @@ class ZWalletTabs extends React.Component {
               className={classnames({ active: this.state.activeTab === '2' })}
               onClick={() => { this.toggleTabs('2'); }}
             >
-              Send HUSH
+              Send ZEN
             </NavLink>
           </NavItem>
           <NavItem>
@@ -962,7 +972,7 @@ class ZWalletTabs extends React.Component {
             />
           </TabPane>
           <TabPane tabId="2">
-            <ZSendHUSH 
+            <ZSendZEN 
               settings={this.props.settings}
               publicAddresses={this.props.publicAddresses}            
             />
@@ -1013,8 +1023,8 @@ export default class ZWallet extends React.Component {
         showSettings: false,
         showWalletGen: false,
         compressPubKey: true,
-        insightAPI: 'https://explorer.myhush.network/api',
-        explorerURL: 'https://explorer.myhush.network/',
+        insightAPI: 'https://explorer.zensystem.io/insight-api-zen/',
+        explorerURL: 'https://explorer.zensystem.io/',
         useTestNet: false,
         unlockType: UNLOCK_WALLET_TYPE.HD_WALLET
       }
@@ -1032,21 +1042,21 @@ export default class ZWallet extends React.Component {
       function _privKeyToAddr(pk, compressPubKey, useTestNet){
         // If not 64 length, probs WIF format
         if (pk.length !== 64){
-          pk = hushjs.address.WIFToPrivKey(pk)          
+          pk = zencashjs.address.WIFToPrivKey(pk)          
         }
 
         // Convert public key to public address
-        const pubKey = hushjs.address.privKeyToPubKey(pk, compressPubKey)
+        const pubKey = zencashjs.address.privKeyToPubKey(pk, compressPubKey)
 
         // Testnet or nah
-        const pubKeyHash = useTestNet ? hushjs.config.testnet.pubKeyHash : hushjs.config.mainnet.pubKeyHash
-        const publicAddr = hushjs.address.pubKeyToAddr(pubKey, pubKeyHash)
+        const pubKeyHash = useTestNet ? zencashjs.config.testnet.pubKeyHash : zencashjs.config.mainnet.pubKeyHash
+        const publicAddr = zencashjs.address.pubKeyToAddr(pubKey, pubKeyHash)
 
         return publicAddr
       }
 
       for (var i = 0; i < this.state.privateKeys.length; i++){
-        const pubKeyHash = this.state.settings.useTestNet ? hushjs.config.testnet.wif : hushjs.config.mainnet.wif
+        const pubKeyHash = this.state.settings.useTestNet ? zencashjs.config.testnet.wif : zencashjs.config.mainnet.wif
         
         var c_pk_wif;
         var c_pk = this.state.privateKeys[i]
@@ -1054,13 +1064,13 @@ export default class ZWallet extends React.Component {
         // If not 64 length, probs WIF format
         if (c_pk.length !== 64){
           c_pk_wif = c_pk
-          c_pk = hushjs.address.WIFToPrivKey(c_pk)
+          c_pk = zencashjs.address.WIFToPrivKey(c_pk)
         }
         else{
-          c_pk_wif = hushjs.address.privKeyToWIF(c_pk)
+          c_pk_wif = zencashjs.address.privKeyToWIF(c_pk)
         }          
 
-        var c_pk_wif = hushjs.address.privKeyToWIF(c_pk, true, pubKeyHash)        
+        var c_pk_wif = zencashjs.address.privKeyToWIF(c_pk, true, pubKeyHash)        
         const c_addr = _privKeyToAddr(c_pk, this.state.settings.compressPubKey, this.state.settings.useTestNet)        
 
         publicAddresses[c_addr] = {
@@ -1147,12 +1157,12 @@ export default class ZWallet extends React.Component {
     _settings.useTestNet = !_settings.useTestNet
 
     if (_settings.useTestNet){
-        _settings.insightAPI = 'https://explorer.testnet.myhush.network/api'
-      _settings.explorerURL = 'https://explorer.testnet.myhush.network/'
+      _settings.insightAPI = 'https://aayanl.tech/insight-api-zen/'
+      _settings.explorerURL = 'https://aayanl.tech/'
     }
     else{
-        _settings.insightAPI = 'https://explorer.myhush.network/api'
-        _settings.explorerURL = 'https://explorer.myhush.network/'
+      _settings.insightAPI = 'https://explorer.zensystem.io/insight-api-zen/'
+      _settings.explorerURL = 'https://explorer.zensystem.io/'
     }
 
     this.setState({
@@ -1183,7 +1193,7 @@ export default class ZWallet extends React.Component {
       <Container>
         <Row>
           <Col>
-            <h1 className='display-6'>Hush Wallet&nbsp;
+            <h1 className='display-6'>ZenCash Wallet&nbsp;
               <ToolTipButton onClick={this.toggleShowSettings} id={1} buttonText={<MDSettings/>} tooltipText={'settings'}/>&nbsp;
               <ToolTipButton disabled={this.state.publicAddresses === null} onClick={this.resetKeys} id={2} buttonText={<FARepeat/>} tooltipText={'reset wallet'}/>
             </h1>
