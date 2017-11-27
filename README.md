@@ -7,7 +7,7 @@ This project is a port of MyZenWallet https://github.com/ZencashOfficial/myzenwa
 Currently avaiable at: https://wallet.myhush.network
 
 # Running locally
-Download index.html, faq.html, guide.html, favicon.ico, Javascript folder (js) and double click `index.html`
+Download dist folder containing: index.html, faq.html, guide.html, favicon.ico, Javascript folder (js) and double click `index.html`
 
 
 # Dev
