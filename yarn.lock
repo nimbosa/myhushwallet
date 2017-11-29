@@ -2313,6 +2313,22 @@ https-browserify@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-0.0.1.tgz#3f91365cabe60b77ed0ebba24b454e3e09d95a82"
 
+"hushjs@git://github.com/TheTrunk/hushjs#master":
+  version "1.0.0"
+  resolved "git://github.com/TheTrunk/hushjs#1a291cdd6e37e084a5af1f8b58616e5071f6ba4f"
+  dependencies:
+    bigi "^1.4.2"
+    bs58 "^4.0.1"
+    bs58check "^2.0.2"
+    create-hash "^1.1.3"
+    create-hmac "^1.1.6"
+    int64-buffer "^0.1.9"
+    libsodium-sumo "^0.5.2"
+    libsodium-wrappers-sumo "^0.5.2"
+    safe-buffer "^5.1.1"
+    secp256k1 "^3.3.0"
+    varuint-bitcoin "^1.0.4"
+
 iconv-lite@~0.4.13:
   version "0.4.18"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.18.tgz#23d8656b16aae6742ac29732ea8f0336a4789cf2"
@@ -2649,9 +2665,13 @@ lcid@^1.0.0:
   dependencies:
     invert-kv "^1.0.0"
 
-libsodium-sumo@0.5.2, libsodium-sumo@^0.5.2:
+libsodium-sumo@0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/libsodium-sumo/-/libsodium-sumo-0.5.2.tgz#0772cec6445c655de46f5001d33ed09951d82868"
+
+libsodium-sumo@^0.5.2:
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/libsodium-sumo/-/libsodium-sumo-0.5.4.tgz#08af4af945754ee9daf2de9d1385c9fc0e64cec0"
 
 libsodium-wrappers-sumo@^0.5.2:
   version "0.5.2"
@@ -4769,19 +4789,3 @@ yargs@~3.10.0:
     cliui "^2.1.0"
     decamelize "^1.0.0"
     window-size "0.1.0"
-
-zencashjs@^1.1.4-a:
-  version "1.1.4-a"
-  resolved "https://registry.yarnpkg.com/zencashjs/-/zencashjs-1.1.4-a.tgz#d5a077f39bea687ea047f8cb7ad08ad468854ae7"
-  dependencies:
-    bigi "^1.4.2"
-    bs58 "^4.0.1"
-    bs58check "^2.0.2"
-    create-hash "^1.1.3"
-    create-hmac "^1.1.6"
-    int64-buffer "^0.1.9"
-    libsodium-sumo "^0.5.2"
-    libsodium-wrappers-sumo "^0.5.2"
-    safe-buffer "^5.1.1"
-    secp256k1 "^3.3.0"
-    varuint-bitcoin "^1.0.4"
