@@ -21,21 +21,21 @@ export default class ZFooter extends React.Component {
         <Container>      
         <Row>
           <Col md="8">
-            <p>MAKE SURE YOU ARE ON <b>WALLET.MYHUSH.NETWORK</b></p>
+            <p>MAKE SURE YOU ARE ON <b>WALLET.MYHUSH.ORG</b></p>
 
             <p>Keys are validated client-side and do not leave your browser or network. You are responsible for keeping your own keys safe!!!</p>
 
             <p>Suggestions? <a href="https://myhush.org/#contact">Contact us</a> or join our <a href="https://discord.io/hush">Discord</a> server!</p>          
 
             <p style={longP}>Donations are always welcome!<br/>
-              <b>HUSH</b>: t1UDhNq2aEqvxEbPzcRM8n2QJV8YJ664rXJ<br/>
+              <b>HUSH</b>: <a href="http://dashboard.myhush.org/#donate">Dashboard donation addresses</a><br/>
             </p>
           </Col>
           <Col md="4">
             <a href="https://myhush.org/">website</a><br/>
             <a href="https://forum.myhush.org/">forum</a><br/>
+            <a href="http://dashboard.myhush.org/">dashboard</a><br/>
             <a href="https://github.com/MyHush/myhushwallet">github</a><br/>
-            <a href="https://myhush.slack.com/">slack</a><br/>
             <a href="https://discord.io/hush">discord</a><br/>
           </Col>
         </Row>
