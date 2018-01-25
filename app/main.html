@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -18,7 +18,36 @@
             align-items: center;
             justify-content: center;
         }
-        /*Translations*/
+        		/*Preloader*/
+
+.preloader{
+  position: fixed;
+  top: 0;left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #2d2d2d;
+  z-index: 99999999;
+  color: #fff;
+  text-align: center;
+}
+.preloader img{
+  display: block;
+  margin-bottom: 5px;
+}
+.preloader span{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.preloader span.second{
+  display: none;
+  color: #000;
+  font-size: 3em;
+}
+/*Translations*/
 .footer2{
     background: #2d2d2d;
     float:right;
@@ -44,8 +73,25 @@ text-decoration: none;
 }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<link rel="shortcut icon" href="favicon.ico"></head>
+</head>
 <body>
+    <script>
+        $(window).load(function () {
+            $('.preloader span.first').delay(4800).fadeOut('slow', function () {
+                $('.preloader span.first').hide();
+            });
+            setTimeout(function () {
+                $('.preloader').fadeOut('slow', function () {
+                    $('.preloader').remove();
+                });
+            }, 5300);
+        });
+    </script>
+    <div class="preloader">
+        <span class="first">
+            <img src="loader.gif">
+        </span>
+    </div>
     <div id="navbar"></div><br />
     <div class="aligner">
         <div id="wallet"></div>
@@ -104,5 +150,5 @@ text-decoration: none;
             });
         };
     </script>
-<script type="text/javascript" src="js/faq.js"></script></body>
+</body>
 </html>
