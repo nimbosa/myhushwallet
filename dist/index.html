@@ -22,14 +22,19 @@
 
 .preloader{
   position: fixed;
-  top: 0;left: 0;
+  display: block;
+  top: 0;
+  left: 0;
+  left: 0;
+  bottom: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  background: #2d2d2d;
-  z-index: 99999999;
-  color: #fff;
-  text-align: center;
+  background-repeat: no-repeat;
+  background-position: center; 
+  background-size: auto;
+  background-image: url(./loader.gif); 
+  background-color:#2d2d2d; 
+  z-index:99; 
 }
 .preloader img{
   display: block;
@@ -76,22 +81,40 @@ text-decoration: none;
 <link rel="shortcut icon" href="favicon.ico"></head>
 <body>
     <script>
+        function createCookie(name, value, secs) {
+            if (secs) {
+                var date = new Date();
+                date.setTime(date.getTime() + (secs * 1000));
+                var expires = "; expires=" + date.toGMTString();
+            }
+            else var expires = "";
+            document.cookie = name + "=" + value + expires + "; path=/";
+        }
+
+        function readCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+    </script>
+    <script>
         $(window).load(function () {
-            $('.preloader span.first').delay(4800).fadeOut('slow', function () {
-                $('.preloader span.first').hide();
-            });
-            setTimeout(function () {
-                $('.preloader').fadeOut('slow', function () {
-                    $('.preloader').remove();
-                });
-            }, 5300);
+            if (readCookie('myhushwallet') == null) {
+                $('#preloader').delay(5300).fadeOut('slow');}
+            createCookie('myhushwallet',1,300);
         });
     </script>
-    <div class="preloader">
-        <span class="first">
-            <img src="loader.gif">
-        </span>
-    </div>
+    <script>
+    if (readCookie('myhushwallet') != null) {
+        document.write("<style>.preloader {display:none;}</style>");
+    }
+    </script>
+    <div class="preloader" id="preloader"></div>
     <div id="navbar"></div><br />
     <div class="aligner">
         <div id="wallet"></div>

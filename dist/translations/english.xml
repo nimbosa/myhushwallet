@@ -23,7 +23,7 @@
 	<translation id="guide1b">Go to</translation>
 	<translation id="guide1c">Enter a strong but easy to remember secret phrase. Save this somewhere and do NOT forget it.</translation>
 	<translation id="guide1d">Click the</translation>
-	<translation id="guide1e">Generate Wallet Button</translation>
+	<translation id="guide1e">Generate/Unlock Wallet Button</translation>
 	<translation id="guide1f">down below the input.</translation>
 	<translation id="guide1g">This creates a</translation>
 	<translation id="guide1h">deterministic wallet</translation>
@@ -51,9 +51,9 @@
 	<translation id="import6">Invalid private key</translation>
 	<translation id="import7">Unlock Private Key</translation>
 	<translation id="wallet1">Warning.</translation>
-	<translation id="wallet2">Make sure you have saved your secret phrase somewhere.</translation>
+	<translation id="wallet2">Make sure you have saved your secret phrase somewhere. The 256/64 button to the right switches between maximum allowed input length.</translation>
 	<translation id="wallet3">Secret phrase too short</translation>
-	<translation id="wallet4">Generate Wallet</translation>
+	<translation id="wallet4">Generate/Unlock Wallet</translation>
 	<translation id="settings1">Hush Wallet Settings</translation>
 	<translation id="settings2">Insight API</translation>
 	<translation id="settings3">Compress Public Key</translation>

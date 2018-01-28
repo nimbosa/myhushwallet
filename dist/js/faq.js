@@ -30905,7 +30905,7 @@ var ZFooter = function (_React$Component) {
                     ),
                     _react2.default.createElement(
                       'a',
-                      { href: 'http://dashboard.myhush.org/#donate' },
+                      { href: 'http://dashboard.myhush.org/#donate', target: '_blank', 'data-toggle': 'tooltip', title: 'Dashboard donation addresses' },
                       ' ',
                       _react2.default.createElement(
                         'span',

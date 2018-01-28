@@ -38162,7 +38162,7 @@ var ZFooter = function (_React$Component) {
                     ),
                     _react2.default.createElement(
                       'a',
-                      { href: 'http://dashboard.myhush.org/#donate' },
+                      { href: 'http://dashboard.myhush.org/#donate', target: '_blank', 'data-toggle': 'tooltip', title: 'Dashboard donation addresses' },
                       ' ',
                       _react2.default.createElement(
                         'span',
@@ -50839,7 +50839,7 @@ var ZWalletUnlockKey = function (_React$Component3) {
             _react2.default.createElement(
               'span',
               { className: 'wallet2' },
-              'Make sure you have saved your secret phrase somewhere.'
+              'Make sure you have saved your secret phrase somewhere. The 256/64 button to the right switches between maximum allowed input length.'
             )
           ),
           this.state.secretPhraseTooShort ? _react2.default.createElement(
@@ -50904,7 +50904,7 @@ var ZWalletUnlockKey = function (_React$Component3) {
               _react2.default.createElement(
                 'span',
                 { className: 'wallet4' },
-                'Generate Wallet'
+                'Generate/Unlock Wallet'
               )
             )
           )

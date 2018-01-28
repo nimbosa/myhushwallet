@@ -33,7 +33,7 @@ export default class ZFooter extends React.Component {
             <p className="f2">Keys are validated client-side and do not leave your browser or network. You are responsible for keeping your own keys safe!!!</p>
 
             <p><span className="f3">Donations are always welcome!</span>
-              <a href="http://dashboard.myhush.org/#donate"> <span className="f4">Dashboard donation addresses</span></a><br/><br/>
+              <a href="http://dashboard.myhush.org/#donate" target="_blank" data-toggle="tooltip" title="Dashboard donation addresses"> <span className="f4">Dashboard donation addresses</span></a><br/><br/>
             </p>
           </Col>
               </Row>

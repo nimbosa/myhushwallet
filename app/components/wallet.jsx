@@ -265,7 +265,7 @@ useLimChars: !this.state.useLimChars,
     else if (this.props.unlockType == UNLOCK_WALLET_TYPE.HD_WALLET){
       return (
         <div>
-          <Alert color="warning"><strong><span className="wallet1">Warning.</span></strong>&nbsp;<span className="wallet2">Make sure you have saved your secret phrase somewhere.</span></Alert>
+          <Alert color="warning"><strong><span className="wallet1">Warning.</span></strong>&nbsp;<span className="wallet2">Make sure you have saved your secret phrase somewhere. The 256/64 button to the right switches between maximum allowed input length.</span></Alert>
           {this.state.secretPhraseTooShort ? <Alert color="danger"><strong><span className="import1">Error.</span></strong>&nbsp;<span className="wallet3">Secret phrase too short</span></Alert> : '' }
           <InputGroup>                                       
             <InputGroupButton>
@@ -286,7 +286,7 @@ useLimChars: !this.state.useLimChars,
             </InputGroupButton>                     
           </InputGroup>
           <div style={{paddingTop: '8px'}}>
-            <Button color="secondary" className="btn-block" onClick={this.unlockHDWallet}><span className="wallet4">Generate Wallet</span></Button>
+            <Button color="secondary" className="btn-block" onClick={this.unlockHDWallet}><span className="wallet4">Generate/Unlock Wallet</span></Button>
           </div>
         </div>
       )

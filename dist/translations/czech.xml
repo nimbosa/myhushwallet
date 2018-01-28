@@ -23,7 +23,7 @@
 	<translation id="guide1b">Jděte na</translation>
 	<translation id="guide1c">Vložte silné, lehce zapamatovatelnou tajnou frázi. Uložte si ji a NEZAPOMEŇTE ji.</translation>
 	<translation id="guide1d">Klikněte na tlačítko</translation>
-	<translation id="guide1e">Generovat peněženku</translation>
+	<translation id="guide1e">Generovat/Odemknout peněženku</translation>
 	<translation id="guide1f">dole.</translation>
 	<translation id="guide1g">Tato akce vytvoří</translation>
 	<translation id="guide1h">deterministickou peněženku</translation>
@@ -51,9 +51,9 @@
 	<translation id="import6">Neplatný privátní klíč</translation>
 	<translation id="import7">Odemknout privátní klíč</translation>	
 	<translation id="wallet1">Upozornění.</translation>
-	<translation id="wallet2">Ujistěte se, že jste si někde uložili vaši tajnou frázi.</translation>
+	<translation id="wallet2">Ujistěte se, že jste si někde uložili vaši tajnou frázi. Tačítko 256/64 napravo přepíná mezi maximální povolenou délkou fráze.</translation>
 	<translation id="wallet3">Tajná fráze je moc krátká</translation>
-	<translation id="wallet4">Generovat peněženku</translation>	
+	<translation id="wallet4">Generovat/Odemknout peněženku</translation>	
 	<translation id="settings1">Nastavení Hush peněženky</translation>
 	<translation id="settings2">Insight API</translation>
 	<translation id="settings3">Kompresovat veřejný klíč</translation>
